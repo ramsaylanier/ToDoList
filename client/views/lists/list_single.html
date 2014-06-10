@@ -1,0 +1,19 @@
+<template name="listSingle">
+	<form class="form add-item-form" name="add-item-form">
+		<input type="text" name="add-item-field" class="add-item-input full-width-input" placeholder="New Item">
+	</form>
+
+	<section class="list-items-section">
+		<ul class="entries-list">
+			{{#each listEntries}}
+				{{> entrySingle}}
+			{{else}}
+				<p>This list has no entries.</p>
+			{{/each}}
+		</ul>
+	</section>	
+</template>
+
+<template name="entrySingle">
+	<li class="list-entry loaded" data-entry-name="{{this}}">{{this}}<button class="delete-entry-btn btn">Delete Entry</button></li>
+</template>

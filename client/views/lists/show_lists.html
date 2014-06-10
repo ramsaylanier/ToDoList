@@ -1,0 +1,22 @@
+<template name="showLists">
+	<ul class="todolists">
+	{{#each lists}}
+		{{> listItem}}
+	{{else}}
+		<li><p>No lists created.</p></li>
+	{{/each}}
+	</ul>
+
+	<section class="add-list">
+	<button class="add-list-btn btn">Add List</button>
+
+	<form name="add-list-form" class="form add-list-form">	
+		<label for="list-name">List Name</label>
+		<input type="text" name="list-name" class="full-width-input">
+	</form>
+	</section>
+</template>
+
+<template name="listItem">
+	<li class="list-name loaded"><a href="{{pathFor 'listSingle'}}" class="list-item-btn">{{name}}</a></li>
+</template>

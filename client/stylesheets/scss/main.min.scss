@@ -1,0 +1,149 @@
+@import "compass/css3";
+@import "compass/reset";
+@import "colors";
+@import "typeplate";
+@import "mixins";
+
+a{
+	text-decoration: none;
+	color: $blue;
+}
+
+*{
+	@include box-sizing(border-box);
+}
+
+.sidebar{
+	position: absolute;
+	height: 100vh;
+	float: left;
+	width: 300px;
+	background-color: $dark-grey;
+	padding: 1rem;
+	z-index: 100;
+}
+
+.sidebar.add-list-active{
+	.add-list-form{
+		opacity: 1.0;
+		max-height: 200px;
+		@include translateX(0px);
+	}
+
+	.add-list-btn{
+		opacity: 0.0;
+		padding: 0px;
+		height: 0px;
+	}
+}
+
+.add-list{
+	position: relative;
+	border-top: 1px solid black;
+	margin-top: 2rem;
+	padding-top: 2rem;
+}
+
+.add-list-btn{
+	@include transition(all 300ms ease-out 100ms);
+}
+
+.form{
+	input{
+		border: none;
+		padding: .75rem .5rem;
+		border-radius: 0px;
+		display: block;
+		box-shadow: none;
+		position: relative;
+	}
+}
+
+.add-list-form{
+	position: absolute;
+	top: 0px;
+	padding: 1rem 0rem;
+	opacity: 0.0;
+	max-height: 0px;
+	width: 100%;
+	@include transition(all 300ms ease-out 100ms);
+	@include translateX(-300px);
+}
+
+.add-item-form{
+	input{
+		font-size: 1.5rem;
+		height: auto;
+		@include input-placeholder{
+			font-size: 1.5rem;
+			line-height: 1.5rem;
+			margin: 0px;
+			padding: 0px;
+
+		}
+	}
+}
+
+.full-width-input{
+	width: 100%;
+}
+
+.content{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	padding: 1rem 3rem 1rem 20rem;
+	z-index: 1;
+	background-color: $grey;
+	overflow: auto;
+}
+
+.list-name{
+	opacity: 1.0;
+	background-color: white;
+	padding: .5rem;
+	margin-bottom: .5rem;
+	@include transition(all 500ms ease-out 100ms);
+
+	a{
+		@include transition(all 500ms ease-out 100ms);
+		display: block;
+		width: 100%;
+	}
+}
+
+.list-name.loaded{
+	opacity: 0.0;
+}
+
+.list-name.active{
+	background-color: $blue;
+	a{
+		color: white;
+	}
+}
+
+.list-entry{
+	padding: .5rem 0rem;
+	border-bottom: 1px solid $dark-grey;
+	opacity:1.0;
+	@include translateX(0px);
+	@include transition(all 300ms ease-out 100ms);
+
+	&:hover{
+		.delete-entry-btn{
+			opacity: 1.0;
+		}
+	}
+
+	.delete-entry-btn{
+		opacity: 0.0;
+		margin-left: 2rem;
+		@include transition(all 300ms ease-out 100ms);
+	}
+}
+
+.list-entry.loaded{
+	opacity: 0.0;
+	@include translateX(-1000px);
+}
